@@ -37,7 +37,7 @@ return(
     <TableCell>
         <Button color="secondary" variant="contained" onClick={()=>props.editUser(user)}>Edit</Button>
         <Button color="error" variant="contained" onClick={()=>props.deleteUser(user.id)}>Delete</Button>
-        <Button color="info" variant="contained">View</Button>
+        <Button color="info" variant="contained" onClick={()=>props.viewUser(user)}>View</Button>
     </TableCell>
 </TableRow>
 

@@ -9,6 +9,7 @@ useEffect(()=>{
 setUser(props.currentUser)
 
 },[props.currentUser])
+
 function handleInputChange(e){
 const {name,value}=e.target
 setUser({...user,[name]:value})
@@ -28,7 +29,9 @@ setUser({...user,[name]:value})
     if (props.editing) {
         props.updatedUser(user.id, user); // Existing user update
     } else {
-        props.addUser(...user); // New user add
+        // props.addUser(...user); // New user add
+        props.addUser(user)
+       setUser(initFormState)
     }
     setUser(initFormState);
 }}>
