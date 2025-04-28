@@ -57,7 +57,7 @@ return(
    
 </Paper>
 <Button sx={{marginLeft:9,marginTop:2}} variant="contained" onClick={()=>{props.openModal(true)
-       props.setEditing(false);  // Reset editing state when adding a new user
+       props.setEditing(false);  // Reset editing state when adding a new user ----- editUser
        props.setCurrentUser({ id: null, Name: "", EmailId: "" }); // Reset form data
 }} >Add User</Button>
 </>

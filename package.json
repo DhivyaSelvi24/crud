@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
+    "cors": "^2.8.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -28,5 +29,6 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "vite": "^6.1.0"
-  }
+  },
+  "proxy": "http://localhost/npx/backend"
 }

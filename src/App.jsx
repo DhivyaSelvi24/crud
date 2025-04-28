@@ -21,13 +21,38 @@ function App() {
  //below 2 lines are for view function
  const[viewModal,setViewModal]=useState(false);
  const[selectedUser,setSelectedUser]=useState(null);
+ 
+ const [users, setUsers] = useState(usersData);
 
   //this is for adding new user while clicking add button
-const addUser=(user)=>{
-user.id=users.length+1
+const addUser=async(user)=>{
+  try{
+    const response=await fetch("http://localhost/npx/backend/create.php",{
+      method:"POST",
+      mode: 'cors',
+      headers:{
+      "Content-Type":"application/json"
+      },
+    body:JSON.stringify({
+      name:user.Name,
+      email:user.EmailId
+    }),
+    });
+    const result = await response.json();
+    if(result.message){
+      console.log("Success:",result.message)
+      user.id=users.length+1
 setUsers([...users,user])
 setOpen(false)
+    }else{
+      console.error("❌ Server error:", result.error);
+    }
+  }
+catch(err){
+  console.error("❌ Fetch error:", err);
 }
+}
+// In your addUser function, consider:
 
 //delete user
 const deleteUser=(id)=>{
@@ -54,12 +79,11 @@ setViewModal(true)
 
 }
 
-  const [users, setUsers] = useState(usersData)
   return (
 
     <div className="container">
      
-      <UserTable users={users} openModal={setOpen} deleteUser={deleteUser} editUser={editUserrow}  viewUser={viewUsers}/>
+      <UserTable setEditing={setEditing} users={users} openModal={setOpen} deleteUser={deleteUser} editUser={editUserrow}  viewUser={viewUsers} setCurrentUser={setCurrentUser}/>
 <AddUserDialog addUser={addUser} openModal={setOpen} initialopen={open} currentUser={currentUser} updatedUser={updateUsers} editing={editing}/>
    <ViewModal viewModal={viewModal} setViewModal={setViewModal} selectedUser={selectedUser} openModal={setOpen}/> 
     </div>

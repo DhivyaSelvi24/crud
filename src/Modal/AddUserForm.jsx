@@ -30,10 +30,12 @@ setUser({...user,[name]:value})
         props.updatedUser(user.id, user); // Existing user update
     } else {
         // props.addUser(...user); // New user add
+        console.log(user);
+
         props.addUser(user)
        setUser(initFormState)
     }
-    setUser(initFormState);
+    // setUser(initFormState);
 }}>
     {props.editing ? "Save Changes" : "Add User"}
 </Button>
